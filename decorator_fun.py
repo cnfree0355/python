@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 import time
-current_time  = time.strftime("%Y-%d-%m  %H:%M:%S")
+current_time  = time.strftime("%Y-%m-%d  %H:%M:%S")
 
 def now():
     print  current_time

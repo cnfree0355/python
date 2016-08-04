@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/env python
 users = ['root','test','develop']
 passwds = [123456,'abc','dev123']
 a=zip(users,passwds)
