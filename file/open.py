@@ -7,7 +7,7 @@ print f.read()
 f.close()
 print '#'*25
 print "open other txt file"
-promot = '>'
-f2 = open(raw_input(promot))
+prompt = '>'
+f2 = open(raw_input(prompt))
 print f2.readline()
 f2.close()
