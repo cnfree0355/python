@@ -17,20 +17,20 @@ class Colors:
         self.green_color = '\033[32m'
         self.yellow_color = '\033[33m'
         self.blue_color = '\033[36m'
-        self.End_color = '\033[0m'
+        self.end_color = '\033[0m'
 
     def notify_color(self, notify, services, message):
         # self.notify = notify
         # self.message = message
         # self.services = services
         if notify == 'success':
-            print self.green_color + services + message + self.End_color
+            print self.green_color + services + message + self.end_color
         elif notify == 'error':
-            print self.red_color + services + message + self.End_color
+            print self.red_color + services + message + self.end_color
         elif notify == 'alert':
-            print self.yellow_color + services + message + self.End_color
+            print self.yellow_color + services + message + self.end_color
         else:
-            print self.blue_color + services + message + self.End_color
+            print self.blue_color + services + message + self.end_color
 
 
 # 初始化函数实例
