@@ -1,12 +1,27 @@
 #!/bin/env python
-import urllib
-import urllib2
-url = 'http://oms.soouya.com/login'
-user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-values = dict(username='cqc', password="XXXX")
-headers = {'User-Agent': user_agent}
-data = urllib.url.encode(values)
-request = urllib2.Request(url, data, headers)
-response = urllib2.urlopen(request)
-page = response.read()
+# coding=utf-8
+import requests
+import cookielib
+
+
+url = 'http://testoms.soouya.com/crm/cm/Seed/login.do'
+HEADERS = {
+    "User-Agent": "Chrome/52.0.2743.82 Safari/537.36"
+}
+#设置同一session 来访问
+s = requests.Session()
+login_info = {"userName":"admin" ,"pwd":"cc03e747a6afbbcbf8be7668acfebee5"}
+r = s.post(url, data=login_info, headers=HEADERS) # data 传递post 请求内容
+pay_load = {"pageNumber":5,
+            "pageSize":30,
+            "status":0}
+#parms 拼接请求
+v = s.get('http://testoms.soouya.com/crm/cm/Seed/getSeedPage.do',params=pay_load)
+
+print v.content
+
+
+
+
+
 
