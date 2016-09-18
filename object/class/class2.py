@@ -12,14 +12,15 @@ class test(object):
         self.number += count
         return self.number
 
-a = test()
+a = test() # 实例化
 b = test()
 
 a.t1()
-
 print a.add(30)
 print a.add(20)
+print "实例b"
 print b.add(30)
 
-
 print a.number
+
+

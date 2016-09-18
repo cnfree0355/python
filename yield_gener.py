@@ -8,10 +8,7 @@
 # it = iter(items)
 # print next(it)
 # print next(it)
-
 '''生成器和迭代器测试练习'''
-
-
 def f_range(start, stop, increment):
     x = start
     while x < stop:
@@ -24,9 +21,7 @@ print list(f_range(0, 50, 5))
 for n in f_range(0, 4, 0.5):
     print n
 
-
 #
-
 # def fab(max):
 #     n, a, b = 0, 0, 1
 #     L = []

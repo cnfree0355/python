@@ -1,25 +1,28 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from flask import Flask,request,render_template
+from flask import Flask, request, render_template
+
 app = Flask(__name__)
-@app.route('/',methods=['GET','POST'])
+
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('home.html')
 
-@app.route('/login',methods=['GET'])
+
+@app.route('/login', methods=['GET'])
 def login_form():
     return render_template('form.html')
 
-@app.route('/login',methods=['post'])
+
+@app.route('/login', methods=['post'])
 def login():
     username = request.form['username']
     password = request.form['password']
     if username == 'admin' and password == 'admin123':
-        return render_template('login-ok.html',username = username)
+        return render_template('login-ok.html', username=username)
 
 
 if __name__ == '__main__':
-    app.run('10.9.0.110',5000,debug=True)
-
-
+    app.run('127.0.0.1', 5000, debug=True)

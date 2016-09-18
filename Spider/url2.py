@@ -1,4 +1,6 @@
 #!/usr/bin/env python
-#*-* coding:utf-8 *-*
+# *-* coding:utf-8 *-*
+
 import urllib
-import urllib
+import urllib2
+
