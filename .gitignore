@@ -5,6 +5,8 @@ __pycache__/
 #pycharm 
 .idea/
 inspection/
+#vim
+.*swp
 # C extensions
 *.so
 # Distribution / packaging
