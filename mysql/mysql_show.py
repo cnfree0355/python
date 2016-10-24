@@ -22,19 +22,19 @@ dbinfo = {
 conn = mysql.connector.Connect(**dbinfo)
 cursor = conn.cursor()
 sql = "show GLOBAL status like 'Bytes_received'"
-cursor.execute(sql)
-CL.notify_color('success', 'mysql 接收的流量')
-receive = cursor.fetchall()
-rec = ','.join(receive[0])
-value = int(rec.split(',')[1])/1024 /1024
-
-print  rec.split(',')[0], value,'M'
+# cursor.execute(sql)
+# CL.notify_color('success', 'mysql 接收的流量')
+# receive = cursor.fetchall()
+# rec = ','.join(receive[0])
+# value = int(rec.split(',')[1])/1024 /1024
+#
+# print  rec.split(',')[0], value,"M"
 
 # li = []
 # def format_output(li):
 #     print '%s \t %-5s' %(li)
 #
-# format_output(r)
+#
 # cursor.execute("show status like 'Innodb_ibuf%'")
 # r = cursor.fetchall()
 # for item in r:
