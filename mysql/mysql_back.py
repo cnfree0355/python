@@ -8,25 +8,30 @@
 from colors import ColorsPrint as CL
 from  subprocess import call
 import time
-import os
+import sys
 
 
-#host为默认参数，需要放在关键字参数前
+# host为默认参数，需要放在关键字参数前
 
-def mysql_back( user, password, db_name,config_file='/etc/mysql/my.cnf',host ='127.0.0.1',**args):
-    CL().notify_color('info', '开始备份数据库'+ db_name)
-    CL().notify_color('info','备份开始 ' + time.strftime('%Y%m%d %H:%m:%S', time.localtime()))
-    print 'user is',user
-    print 'pass is',password
-    print 'db is',db_name
+def mysql_back(user, password, config_file='/etc/mysql/my.cnf',host ='127.0.0.1',**args):
+    CL().notify_color('info', '开始备份数据库')
+    CL().notify_color('info', '备份开始 ' + time.strftime('%Y%m%d %H:%M:%S', time.localtime()))
+    print 'user is', user
+    print 'pass is', password
     print 'config is', config_file
-    print 'host is',host
+    print 'host is', host
     print 'back_dir is', args.values()[0]
     print 'use memory is', args.values()[1]
-    time.sleep(5)
-    CL().notify_color('success', '备份结束 ' + time.strftime('%Y%m%d %H:%m:%S', time.localtime()))
+
+    ret_code = call("innobackupex --defaults-file="+config_file+"\t"+"--user="+user+"\t"+"--password="+password+'\t'+args.values()[0], shell=True )
+    if ret_code == 0:
+        CL().notify_color('success', '备份结束 ' + time.strftime('%Y%m%d %H:%M:%S', time.localtime()))
+    else:
+        CL().notify_color('error', '备份失败请检查!')
+
+
 if __name__ == '__main__':
-    mysql_back('root','123456','oms',backdir='/opt/mysql-back',value='4G')
+     mysql_back('root','s0ouya123!@#',back_dir='/opt/mysql-back',value='4G')
 
 
 
