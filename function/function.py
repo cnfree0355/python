@@ -8,6 +8,17 @@ x = int(raw_input('type the x here'))
 
 y  = int(raw_input('type the y here'))
 choose(x,y)
+choose(10,15)
+
+
+def test(value):
+    a = int(raw_input("Type number here:"))
+    if a > value:
+        print a , "is bigger"
+    else:
+        print value, 'is bigger'
+
+test(7)
 
 a = '*'
 print a*15

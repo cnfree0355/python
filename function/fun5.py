@@ -35,7 +35,8 @@ def clac1(*numbers):
 
 b = clac1(2, 5)
 c = clac1(2, 3, 4, 5)
-print  b, c
+print 'b is', b
+print 'c is', c
 
 numbers = range(9)
 d = clac1(*numbers)

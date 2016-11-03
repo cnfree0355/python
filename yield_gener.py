@@ -6,10 +6,11 @@
 
 
 """ 生成器和迭代器测试练习 """
-# items = [1, 2, 3]
-# it = iter(items)
-# print next(it)
-# print next(it)
+items = [1, 2, 3]
+it = iter(items)
+print next(it)
+print next(it)
+
 
 def f_range(start, stop, increment):
     x = start
@@ -37,15 +38,15 @@ for n in f_range(0, 4, 0.5):
 #     print n
 
 
-def fab_yield(max):
+def fab_yield(max_num):
     """ yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，
     Python 解释器会将其视为一个 generator，"""
     m, a, b = 0, 0, 1
-    while m < max:
+    while m < max_num:
         # print b
         yield b
         a, b = b, a + b
-        m = m + 1
+        m += 1
 
 
 fab_yield(5)
@@ -56,15 +57,13 @@ for i in fab_yield(5):
 print list(fab_yield(5))
 
 
-def foo():
-    print "begin -------"
-    for i in range(3):
-        print "before yield", i
-        yield i
-        print "after yield", i
-    print "end -------"
+def countdown(num):
+    print('Starting')
+    while num > 0:
+        yield num
+        num -= 1
 
-f = foo()
-print list(f)
-# f.next()
 
+li = countdown(5)
+for i in li:
+    print i
