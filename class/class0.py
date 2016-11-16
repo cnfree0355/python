@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2016/8/11 18:01
 # @Author  : GHL
-# @File    : app.py
+# @File    : class0.py
 
 
 class User(object):
@@ -25,7 +25,7 @@ t1.info()
 print t1.__dict__
 print "-" * 20
 
-t2 = User('linlin', 24)
+t2 = User('lin_lin', 24)
 
 
 def print_some(message):
@@ -34,5 +34,30 @@ def print_some(message):
 print_some(t2)
 
 
+class Root(object):
+    """ 超类的例子,注意新式类才可以使用"""
+    def __init__(self):
+        print("this is Root")
 
 
+class B(Root):
+    def __init__(self):
+        print("enter B")
+        # print(self)  # this will print <__main__.D object at 0x...>
+        super(B, self).__init__()
+        print("leave B")
+
+
+class C(Root):
+    def __init__(self):
+        print("enter C")
+        super(C, self).__init__()
+        print("leave C")
+
+
+class D(B, C):
+    pass
+
+
+d = D()
+print(d.__class__.__mro__)

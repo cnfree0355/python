@@ -59,7 +59,6 @@ def show_status(variables):
         print li[n][0][0] + "\t" + li[n][0][1]
 
 
-
 CL.notify_color('notify', "create 相关的状态")
 show_status(DB_create)
 print DMT * 80
