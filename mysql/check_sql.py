@@ -19,7 +19,7 @@ class MysqlCheck(object):
 
     def check_file(self):
         try:
-            with open(self.filename) as f:
+            with open(self.filename.decode('utf-8')) as f: # 若路径含有中文open需要做编码处理
                 contents = f.read()
                 update_reg = re.compile(r"^\s*UPDATE[\s\w.,!=()'`\[\]\n+\-\x80-\xff]*;$", re.I | re.M)
                 alter_reg = re.compile(r"^\s*ALTER[\w\s'`\-()\n.:=%,+\x80-\xff]*;$", re.I | re.M)
@@ -36,7 +36,7 @@ class MysqlCheck(object):
                 if match_create_table:
                     print "一共有 %d 个%s 语句 " % (len(match_create_table), "CREATE TABLE")
                 else:
-                    CL.notify_color('error', "没有匹配结果")
+                    CL.notify_color('error', "没有匹配到CREATE TABLE结果")
                 if match_create_view:
                     print "一共有 %d 个%s 语句 " % (len(match_create_view), "CREATE VIEW")
                 else:
@@ -58,5 +58,5 @@ class MysqlCheck(object):
 
 
 if __name__ == '__main__':
-    MC = MysqlCheck("2016-11-28.sql")
+    MC = MysqlCheck("redwood.sql")
     MC.check_file()

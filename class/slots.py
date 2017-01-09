@@ -64,7 +64,7 @@ s3 = Test()
 s3.name = "liu_liu"
 s3.salary = 8000
 # 会出现error
-# s3.age = 25
+s3.age = 25
 
 print s3.name
 print s3.salary
