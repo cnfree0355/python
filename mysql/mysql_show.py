@@ -12,10 +12,11 @@ from colors import ColorsPrint as CLP
 CL = CLP()
 CL.notify_color('info', 'mysql 运行状态查看')
 DMT = '-'
+db_pass = raw_input('输入密码，用单引号包含: ')
 print DMT * 80
 dbinfo = {
     'user': 'root',
-    'password': 's0ouya123!@#',
+    'password': db_pass,
     'database': 'mysql',
     'host': 'cn1.soouya.cn'
 
