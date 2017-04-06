@@ -12,11 +12,11 @@ from colors import ColorsPrint as CLP
 CL = CLP()
 CL.notify_color('info', 'mysql 运行状态查看')
 DMT = '-'
-db_pass = raw_input('输入密码，用单引号包含: ')
+# db_pass = raw_input('输入密码，用单引号包含: ')
 print DMT * 80
 dbinfo = {
     'user': 'root',
-    'password': db_pass,
+    'password': 's0ouya123!@#',
     'database': 'mysql',
     'host': 'cn1.soouya.cn'
 
@@ -47,8 +47,6 @@ DB_alter = [
     "Com_alter_db", "Com_alter_table", "Com_alter_view",
     "Com_alter_function", "Com_alter_procedure", "Com_alter_trigger"
           ]
-
-
 def show_status(variables):
     li = []
     for i in range(0, len(variables)):
@@ -58,7 +56,6 @@ def show_status(variables):
         li.append(r)
     for n in range(0, len(li)):
         print li[n][0][0] + "\t" + li[n][0][1]
-
 
 CL.notify_color('notify', "create 相关的状态")
 show_status(DB_create)

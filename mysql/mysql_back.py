@@ -12,6 +12,7 @@ import datetime
 import os
 
 
+
 def days_ago(days_num):
     """ 获取几天前的日期"""
     today = datetime.datetime.now()
@@ -20,7 +21,10 @@ def days_ago(days_num):
     return few_days_ago
 
 # 输入密码,需要添加单引号,否则会提示找不到命令
-db_pass = raw_input('type the password: ')
+CL().notify_color('alert', '输入密码，用单引号包含!!!')
+time.sleep(3)
+db_pass = raw_input('在此输入密码: ')
+compress_time = time.strftime('%Y%m%d', time.localtime())
 
 
 def mysql_back(user, password, config_file='/etc/mysql/my.cnf', host='127.0.0.1', **args):
@@ -38,12 +42,12 @@ def mysql_back(user, password, config_file='/etc/mysql/my.cnf', host='127.0.0.1'
     else:
         CL().notify_color('info', '备份开始 ' + time.strftime('%Y%m%d %H:%M:%S', time.localtime()))
         ret_code = call("innobackupex --defaults-file=" + config_file + "\t" + "--user=" + user + "\t"
-                        + "--password=" + password + "\t" + "--use-memory=" + memory + '\t'
-                        + back_dir, shell=True)
+                        + "--password=" + password + "\t" + "--use-memory="
+                        + memory + '\t' + back_dir + " " + ">/dev/null 2&>1", shell=True)
         if ret_code == 0:
             CL().notify_color('success', '备份结束 ' + time.strftime('%Y%m%d %H:%M:%S', time.localtime()))
             os.chdir(back_dir)
-            call("find ./mysql-back -mtime +7 -type d |xargs rm -f", shell=True)
+            call("find ./ -mtime +7 -type d |xargs rm -f", shell=True)
         else:
             CL().notify_color('error', '备份失败请检查!')
 

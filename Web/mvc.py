@@ -22,6 +22,8 @@ def login():
     password = request.form['password']
     if username == 'admin' and password == 'admin123':
         return render_template('login-ok.html', username=username)
+    else:
+        return  "wrong user or password!"
 
 
 if __name__ == '__main__':
